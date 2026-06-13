@@ -1,4 +1,5 @@
 import "./App.css";
+import Dictionary from "./Dictionary";
 
 function App() {
   return (
@@ -14,35 +15,31 @@ function App() {
         <p className="lead">Search Australian English words and phrases.</p>
       </section>
 
-      <section className="row justify-content-center">
-        <div className="col-md-8 col-lg-6">
-          <form className="mb-4">
-            <input
-              type="search"
-              className="form-control"
-              placeholder="Search for a word, e.g. arvo"
-            />
-          </form>
+      <Dictionary />
 
-          <div className="card shadow-sm">
-            <div className="card-body">
-              <h2 className="card-title">arvo</h2>
-
-              <p className="card-text">
-                <strong>Meaning:</strong> afternoon
-              </p>
-
-              <p className="card-text">
-                <strong>Example:</strong> I'll call you this arvo.
-              </p>
-
-              <p className="card-text">
-                <strong>Standard English:</strong> afternoon
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <footer className="text-center mt-5 small">
+        This project was coded by{" "}
+        <a href="https://github.com/LeishaH" target="_blank" rel="noreferrer">
+          Leisha Henry
+        </a>{" "}
+        and is{" "}
+        <a
+          href="https://github.com/LeishaH/aussie-dictionary"
+          target="_blank"
+          rel="noreferrer"
+        >
+          open-sourced on GitHub
+        </a>{" "}
+        and{" "}
+        <a
+          href="https://aussie-dictionary.netlify.app/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          hosted on Netlify
+        </a>
+        .
+      </footer>
     </main>
   );
 }
