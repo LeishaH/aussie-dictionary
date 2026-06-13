@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import Results from "./Results";
 
 function Dictionary() {
   const [keyword, setKeyword] = useState("");
@@ -33,31 +34,7 @@ function Dictionary() {
           />
         </form>
 
-        {definition && (
-          <div className="card shadow-sm">
-            <div className="card-body">
-              <h2 className="card-title">{definition.word}</h2>
-
-              <p className="card-text">
-                <strong>Definition:</strong>{" "}
-                {definition.meanings[0].definitions[0].definition}
-              </p>
-
-              {definition.meanings[0].partOfSpeech && (
-                <p className="card-text">
-                  <strong>Part of speech:</strong>{" "}
-                  {definition.meanings[0].partOfSpeech}
-                </p>
-              )}
-
-              {definition.phonetic && (
-                <p className="card-text">
-                  <strong>Phonetic:</strong> {definition.phonetic}
-                </p>
-              )}
-            </div>
-          </div>
-        )}
+        <Results definition={definition} />
       </div>
     </section>
   );
