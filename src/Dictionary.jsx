@@ -1,15 +1,23 @@
 import { useState } from "react";
+import axios from "axios";
 
 function Dictionary() {
   const [keyword, setKeyword] = useState("");
+  const [definition, setDefinition] = useState(null);
 
-  function handleKeywordChange(event) {
-    setKeyword(event.target.value);
+  function handleResponse(response) {
+    setDefinition(response.data[0]);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    alert(`Searching for ${keyword}`);
+
+    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleKeywordChange(event) {
+    setKeyword(event.target.value);
   }
 
   return (
@@ -19,29 +27,37 @@ function Dictionary() {
           <input
             type="search"
             className="form-control"
-            placeholder="Search for a word, e.g. arvo"
+            placeholder="Search for a word, e.g. kangaroo"
             value={keyword}
             onChange={handleKeywordChange}
           />
         </form>
 
-        <div className="card shadow-sm">
-          <div className="card-body">
-            <h2 className="card-title">arvo</h2>
+        {definition && (
+          <div className="card shadow-sm">
+            <div className="card-body">
+              <h2 className="card-title">{definition.word}</h2>
 
-            <p className="card-text">
-              <strong>Meaning:</strong> afternoon
-            </p>
+              <p className="card-text">
+                <strong>Definition:</strong>{" "}
+                {definition.meanings[0].definitions[0].definition}
+              </p>
 
-            <p className="card-text">
-              <strong>Example:</strong> I'll call you this arvo.
-            </p>
+              {definition.meanings[0].partOfSpeech && (
+                <p className="card-text">
+                  <strong>Part of speech:</strong>{" "}
+                  {definition.meanings[0].partOfSpeech}
+                </p>
+              )}
 
-            <p className="card-text">
-              <strong>Standard English:</strong> afternoon
-            </p>
+              {definition.phonetic && (
+                <p className="card-text">
+                  <strong>Phonetic:</strong> {definition.phonetic}
+                </p>
+              )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );
