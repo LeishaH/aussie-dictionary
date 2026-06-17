@@ -1,3 +1,5 @@
+import Synonyms from "./Synonyms";
+
 function Meaning({ meaning }) {
   return (
     <div className="mb-4">
@@ -12,6 +14,8 @@ function Meaning({ meaning }) {
               <em>{definition.example}</em>
             </p>
           )}
+
+          <Synonyms synonyms={definition.synonyms} />
         </div>
       ))}
     </div>
