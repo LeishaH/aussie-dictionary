@@ -3,7 +3,7 @@ import Meaning from "./Meaning";
 
 function Results({ definition }) {
   if (!definition) {
-    return null;
+    return <p className="text-center">Loading...</p>;
   }
 
   let phonetic = definition.phonetics.find(function (phonetic) {

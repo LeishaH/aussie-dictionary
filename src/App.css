@@ -11,12 +11,66 @@ body {
   height: auto;
 }
 
+.card {
+  border: none;
+  border-radius: 12px;
+}
+
 .card-title {
   color: #0b1e3d;
   font-weight: 700;
 }
 
+.btn-primary {
+  background-color: #5f7f52;
+  border-color: #5f7f52;
+}
+
+.btn-primary:hover {
+  background-color: #0b1e3d;
+  border-color: #0b1e3d;
+}
+
 .form-control:focus {
   border-color: #5f7f52;
   box-shadow: 0 0 0 0.25rem rgba(95, 127, 82, 0.25);
+}
+
+a {
+  color: #5f7f52;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0b1e3d;
+  text-decoration: underline;
+}
+
+audio {
+  max-width: 100%;
+  margin-bottom: 12px;
+}
+
+.Meaning {
+  margin-top: 20px;
+}
+
+.Meaning h3 {
+  color: #5f7f52;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.Synonyms {
+  margin-top: 8px;
+}
+
+.Synonyms li {
+  display: inline-block;
+  margin: 0 8px 8px 0;
+  padding: 4px 8px;
+  background: #f8f5ef;
+  border-radius: 6px;
+  color: #0b1e3d;
 }
