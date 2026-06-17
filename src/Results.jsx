@@ -1,3 +1,4 @@
+import Phonetic from "./Phonetic";
 import Meaning from "./Meaning";
 
 function Results({ definition }) {
@@ -5,16 +6,16 @@ function Results({ definition }) {
     return null;
   }
 
+  let phonetic = definition.phonetics.find(function (phonetic) {
+    return phonetic.audio;
+  });
+
   return (
     <div className="card shadow-sm">
       <div className="card-body">
         <h2 className="card-title">{definition.word}</h2>
 
-        {definition.phonetic && (
-          <p className="card-text">
-            <strong>Phonetic:</strong> {definition.phonetic}
-          </p>
-        )}
+        {phonetic && <Phonetic phonetic={phonetic} />}
 
         {definition.meanings.map((meaning, index) => (
           <Meaning meaning={meaning} key={index} />
