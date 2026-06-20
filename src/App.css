@@ -52,6 +52,11 @@ audio {
   margin-bottom: 12px;
 }
 
+.Photos img {
+  margin-bottom: 12px;
+  border-radius: 12px;
+}
+
 .Meaning {
   margin-top: 20px;
 }

@@ -1,19 +1,35 @@
 import { useState } from "react";
 import axios from "axios";
 import Results from "./Results";
+import Photos from "./Photos";
 
 function Dictionary() {
   const [keyword, setKeyword] = useState("kangaroo");
   const [definition, setDefinition] = useState(null);
   const [loaded, setLoaded] = useState(false);
+  const [photos, setPhotos] = useState(null);
 
   function handleResponse(response) {
     setDefinition(response.data[0]);
   }
 
+  function handlePexelsResponse(response) {
+    setPhotos(response.data.photos);
+  }
+
   function search() {
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`;
     axios.get(apiUrl).then(handleResponse);
+
+    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=3`;
+
+    axios
+      .get(pexelsApiUrl, {
+        headers: {
+          Authorization: import.meta.env.VITE_PEXELS_API_KEY,
+        },
+      })
+      .then(handlePexelsResponse);
   }
 
   function handleSubmit(event) {
@@ -49,6 +65,7 @@ function Dictionary() {
           </div>
 
           <Results definition={definition} />
+          <Photos photos={photos} />
         </div>
       </section>
     );
